@@ -9,7 +9,7 @@ public class WaypointNode : SearchNode
     private void OnTriggerEnter(Collider other)
     {
         SearchAgent searchAgent = other.GetComponent<SearchAgent>();
-        if (searchAgent != null)
+        if (searchAgent != null && searchAgent.Waypoint == this)
         {
             searchAgent.Waypoint = nextWaypoint;
         }

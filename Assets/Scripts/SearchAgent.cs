@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SearchAgent : MonoBehaviour
 {
-    public WaypointNode Waypoint { get; set; }
+    public WaypointNode Waypoint;
     // Update is called once per frame
     void Update()
     {
