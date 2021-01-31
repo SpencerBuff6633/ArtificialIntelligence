@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GraphNodeSelector : MonoBehaviour
 {
-    public LayerMask layerMask;
+    public LayerMask LayerMask;
     public GameObject selection;
 
     public bool IsActive { get { return selection.activeSelf; } }
@@ -13,22 +13,23 @@ public class GraphNodeSelector : MonoBehaviour
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, layerMask))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100, LayerMask))
         {
             GraphNode graphNode = hitInfo.collider.GetComponent<GraphNode>();
 
             selection.SetActive(true);
             selection.transform.position = hitInfo.collider.transform.position;
 
-            if (Input.GetMouseButtonDown(1))
+            if(Input.GetMouseButtonDown(1))
             {
                 if(Input.GetKey(KeyCode.S))
                 {
+                    GraphNode.ClearNodeType(GraphNode.eType.Source);
                     graphNode.Type = GraphNode.eType.Source;
-
                 }
                 else if (Input.GetKey(KeyCode.D))
                 {
+                    GraphNode.ClearNodeType(GraphNode.eType.Destination);
                     graphNode.Type = GraphNode.eType.Destination;
                 }
             }
