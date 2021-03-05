@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoolCondition : MonoBehaviour
+public class BoolCondition : Condition
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool value { get; set; }
+    public bool parameter { get; set; }
 
-    // Update is called once per frame
-    void Update()
+    public override bool IsTrue()
     {
-        
+        return (parameter == value);
     }
 }
